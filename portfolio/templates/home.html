@@ -1,15 +1,44 @@
 {% extends 'layout.html' %}
 
-{% blockcontent %}
-<h1>Principal</h1>
+{% block content %}
+{% load static %}
 
-{% for proyecto in proyectos %}
-<h1>{{proyecto.title}}</h1>
-<p>{{proyecto.descripcion}}</p>
-<img src="{{proyecto.imagenes.url}}" alt="{{proyecto.title}}">
-{% if proyecto.url %}
-<a href="{{proyecto.url}}">{{proyecto.url}}</a>
-{% endif %}
-{% endfor %}
+<header class="row bg-black">
+    <div class="col-md-4">
+        <img src="{% static 'portfolio/perfil.jpeg' %}" class="img-fluid"/>
+    </div>
 
-{% endblock %}
+    <div class="col-md-8 my-auto">
+        <h1>Soy <strong>Pablo</strong></h1>
+        <h3>Jr. Python software developer</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate facere temporibus dicta ipsa, tempore rem assumenda quidem, placeat, ad praesentium blanditiis nesciunt tempora nemo vitae illum fuga totam labore quia autem! Nam tempora architecto pariatur ducimus minima debitis. Tenetur deleniti animi consequuntur ipsa nulla alias tempora suscipit quam libero debitis veritatis quae, ipsam odit iste. Optio non sequi sit officiis culpa reiciendis dicta vitae quasi inventore tempore obcaecati asperiores, odio ex unde. Quam voluptatem eos incidunt doloribus voluptate voluptatum sequi suscipit dolorum adipisci magnam ipsa accusantium explicabo, animi pariatur aspernatur, laboriosam itaque et dolores architecto illum, ea quod alias. Obcaecati?</p>
+        <a href="{% static 'portfolio/cv.pdf' %}" class="btn btn-primary btn-lg rounded-0 my-3">Descargar CV</a>
+    </div>
+</header>
+
+
+<div class="row my-4 text-center">
+
+    <h3>Mis Proyectos</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus mollitia, quis modi illo exercitationem quia doloremque magnam ab nisi tempora eveniet totam et, impedit nulla commodi non quod unde quae!</p>
+
+    {% for proyecto in proyectos %}
+
+    <div class="col-md-4 p-4">
+        <div class="card bg-black card-project">
+            <img src="{{proyecto.imagenes.url}}" alt="{{proyecto.title}}" class="card-img-top">
+            <div class="card-body">
+                <h2>{{proyecto.titulo}}</h2>
+                <p>{{proyecto.descripcion}}</p>
+
+                {% if proyecto.url %}
+                <a class="btn btn-light rounded-0 btn-sm" target="_blank" href="{{proyecto.url}}">{{proyecto.url}}</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% endblock %}
+
+</div>
+
