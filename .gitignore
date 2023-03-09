@@ -1,3 +1,5 @@
+media
+**__pychache__**
 .vscode/
 venv/
 db.sqlite
